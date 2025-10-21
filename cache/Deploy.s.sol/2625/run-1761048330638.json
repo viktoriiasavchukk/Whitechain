@@ -1,0 +1,34 @@
+{
+  "transactions": [
+    {
+      "rpc": "https://rpc-testnet.whitechain.io"
+    },
+    {
+      "rpc": "https://rpc-testnet.whitechain.io"
+    },
+    {
+      "rpc": "https://rpc-testnet.whitechain.io"
+    },
+    {
+      "rpc": "https://rpc-testnet.whitechain.io"
+    },
+    {
+      "rpc": "https://rpc-testnet.whitechain.io"
+    },
+    {
+      "rpc": "https://rpc-testnet.whitechain.io"
+    },
+    {
+      "rpc": "https://rpc-testnet.whitechain.io"
+    },
+    {
+      "rpc": "https://rpc-testnet.whitechain.io"
+    },
+    {
+      "rpc": "https://rpc-testnet.whitechain.io"
+    },
+    {
+      "rpc": "https://rpc-testnet.whitechain.io"
+    }
+  ]
+}
