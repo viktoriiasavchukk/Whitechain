@@ -7,7 +7,6 @@ import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 import {ItemTypes} from "./ItemTypes.sol";
 
-// TODO: comments can be better
 /// @title ResourceNFT1155
 /// @notice ERC1155-based resources. Minting and burning are allowed only for authorized contracts (e.g., Crafting, Search, Marketplace).
 /// @dev Standard transfers are allowed, but public mint/burn functions are not available.
