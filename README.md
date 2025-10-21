@@ -1,80 +1,36 @@
-Whitechain
-Введення
-Дане тестове завдання було підготовлено компанією WhiteBIT для студентів
-університету НаУКМА. Це завдання дає змогу компанії оцінити аналітичні,
-технічні та архітектурні навички кандидатів.
-Вимоги до коду
-Код має бути виконаний на версії Solidity = 0.8.24, також він має бути
-задеплоєний і верифікований у мережу Whitechain Testnet.
-Має бути 100% покриття тестами свого контракту, і задеплоєно за
-допомогою Hardhat або Foundry, скрипти мають бути написані на TypeScript. 
-Коментарі до коду мають відповідати формату natSpec. 
-Має бути доданий README файл з адресами задеплоєних контрактів, на ньому мають бути
-виконані крафт речей, і всі інструкції для того, щоб задеплоїти проєкт. 
-Посилання на pull request викласти на Distedu.
-Використання таких бібліотек є необов’язковим, та за
-бажанням студента:
-UUPSUpgradeable
-Initializable
-AccessControl
-Та й інші
-Завдання: Гра “Козацький бізнес”
-У грі існує 6 базових ресурсів NFT1155:
-• Дерево (Wood)
-• Залізо (Iron)
-• Золото (Gold)
-• Шкіра (Leather)
-• Камінь (Stone)
-• Алмаз (Diamond)
-Гравці можуть об’єднувати ресурси та створювати унікальні предмети NFT721:
-1. Шабля козака
-• 3× Залізо
-• 1× Дерево
-• 1× Шкіра
-2. Посох старійшини
-• 2× Дерево
-• 1× Золото
-• 1× Алмаз
-3. Броня характерника (не обовʼязково)
-• 4× Шкіра
-• 2× Залізо
-• 1× Золото
-4. Бойовий браслет (не обовʼязково)
-• 4× Залізо
-• 2× Золото
-• 2× Алмаз
-Механіка NFT-1155 / NFT721:
-Створення NFT можливе лише через контракти Crafting або Search.
-Пряме створення або спалення NFT через базові контракти ResourceNFT1155 та
-ItemNFT721 — заборонене.
-Спалення NFT можливе тільки під час продажу предметів у контракті Marketplace.
-Механіка MagicToken (ERC20):
-Токени MagicToken можна отримати лише через продаж предметів у контракті
-Marketplace.
-Пряме мінтинг токенів через контракт MagicToken заборонений. Мінт викликається
-виключно з Marketplace.
-Отримані MagicToken надходять на гаманець гравця після успішного продажу
-предмета.
-Механіка Crafting / Search:
-Гравець може запускати пошук ресурсів раз на 60 секунд.
-Пошук генерує 3 випадкових ресурси (ResourceNFT1155), які надходять на
-гаманець гравця.
-Для створення предмета (ItemNFT721) через крафт, гравець повинен мати
-необхідну кількість ресурсів.
-Під час крафту:
-Ресурси спалюються.
-Створюється предмет (NFT721) з унікальним ID.
-Створені предмети можна:
-продавати на Marketplace,
-або передавати іншим гравцям.
-Механіка Marketplace:
-Гравці можуть продавати предмети (NFT721) за MagicToken.
-Після купівлі предмета:
-NFT спалюється.
-Продавець отримує відповідну кількість MagicToken на свій гаманець.
-Контракти:
-ResourceNFT1155
-ItemNFT721 (2-4шт)
-Crafting/Search
-Marketplace
-MagicToken (ERC20)
+# Козацький бізнес
+
+## Overview
+- **ERC1155** `ResourceNFT1155`: base resources — Wood, Iron, Gold, Leather, Stone, Diamond.
+- **ERC721** `ItemNFT721`: crafted items — Kozak Sabre, Elder Staff, (optional) Armor.
+- **Core** `CraftingSearch`: sets recipes, burns resources, mints items.
+- **ERC20** `MagicToken`: reward token (minted by Marketplace).
+- **Library** `ItemTypes`: enums for ResourceId / ItemKind.
+
+### Recipes
+- **Kozak Sabre:** 3× Iron + 1× Wood + 1× Leather  
+- **Elder Staff:** 2× Wood + 1× Gold + 1× Diamond  
+- **Armor (optional):** 4× Leather + 2× Iron + 1× Gold
+
+---
+
+## Quick Start
+```bash
+# deps
+forge install OpenZeppelin/openzeppelin-contracts@v5.0.2
+forge install foundry-rs/forge-std
+npm i   # because deployment scripts are written in Hardhat/Typescript
+
+# tests & coverage
+forge test -vv
+forge coverage
+```
+
+--- 
+
+### Deployed contracts
+
+ResourceNFT1155: 0x79ED031A5f1d8b405FAA7ea6923810579d08A777
+ItemNFT721:      0xC1cb6777992E1C4640380276a4Eb030b22836520
+MagicToken:      0x674825Df7dfc838285871c2e8Ea5eBfE175EA4c5
+CraftingSearch:  0x0602A601c92A3175561D88babc5E51Ee0c6bfD2d
